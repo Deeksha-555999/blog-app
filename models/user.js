@@ -62,7 +62,7 @@ const userSchema = new Schema(
 
 userSchema.static('matchPasswordAndGenerateToken', async function (email, password) {
   const user = await this.findOne({ email });
-  if (!user) throw new Error("user not found")
+  if (!user) throw new Error("user not foundff")
   
   console.log('user in model', user.salt, user.email, user.password)
   const salt = user.salt;

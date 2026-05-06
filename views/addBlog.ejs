@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ('./partials/head') %>
+    <body>Add New Blog</body>
+  </head>
+  <body>
+    <%- include ('./partials/navbar') %>
+    <div class="container mt-5">
+      <form action="/blog/add" method="post">
+        <div class="mb-3">
+          <label for="body" class="form-label">body</label>
+          <input
+            type="text"
+            class="form-control"
+            id="body"
+            name="body"
+            aria-describedby="body"
+          />
+        </div>
+          <div class="mb-3">
+          <label for="body">Body</label>
+          <textarea name="body" class="form-control" id="body"></textarea>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include ('./partials/scripts') %>
+  </body>
+</html>

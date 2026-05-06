@@ -4,6 +4,7 @@ const userRouter = require("./routes/user");
 const connectDB = require("./mongodb.js");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const blogRouter = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 connectDB();
 
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 }) 
 
 app.use('/user', userRouter);
+app.use('/blog', blogRouter);
 
 
 
