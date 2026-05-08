@@ -9,6 +9,7 @@ const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
 const Blog = require("./models/blog");
+const Comment = require("./models/comment");
 connectDB();
 
 const app = express();
@@ -22,6 +23,9 @@ const PORT = 3001;
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
+
+app.use(express.static(path.resolve("./public")));
+
 app.get("/", async(req, res) => { 
      const allBlogs = await Blog.find({})
   res.render("home", { user: req.user, blogs: allBlogs });
@@ -29,5 +33,7 @@ app.get("/", async(req, res) => {
 
 app.use("/user", userRouter);
 app.use("/blog", blogRouter);
+
+
 
 app.listen(PORT, () => console.log(`Server Started at PORT: ${PORT}`));
