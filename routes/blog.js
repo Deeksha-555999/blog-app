@@ -34,7 +34,14 @@ router.get("/:id", async (req, res)=> {
      return res.render("blog", { user: req.user, blog, comments})
 });
 
-
+router.post("/comment/:id", async (req, res) => {
+  await Comment.create({
+    content: req.body.content,
+    blogId: req.params.id,
+    createdBy: req.user._id,
+  });
+  return res.redirect(`/blog/${req.params.id}`);
+});
 
  router.post("/", upload.single('coverImage'), async (req, res)=> {
       const {title, body} = req.body; 
@@ -43,7 +50,7 @@ router.get("/:id", async (req, res)=> {
         body,
         createdBy: req.user._id,
         coverImageURL: `/uploads/${req.file.filename}`
-
+       
        })
   
     return res.redirect(`/blog/${blog._id}`);

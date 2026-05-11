@@ -14,24 +14,38 @@
       <pre class = "mt-3"><%= blog.body %></pre>
     </div>
     
-  <div class="mt-4 mb-3">
-        <img src="<%= blog.createdBy.profileImageURL %>" width="50px" class="rounded-circle" width="50px" />
+  <div class="mt-4 mb-3 d-flex align-items-center  "> 
+       <div class="me-2 d-flex align-items-center"> <strong> Posted By : </strong>
+        <img src= "/images/blog.jpeg" width="50px" class="rounded-circle" />
         <strong><%= blog.createdBy.fullName %></strong>
+        </div>
       </div>
 
+    <div class="container mt-3">
+      <h1>Comments (<%= comments.length %>)</h1>
+      <% if (locals.user) { %>
+      <form action="/blog/comment/<%= blog._id %>" method="post">
+        <div class="mb-3">
+          <input
+            type="text"
+            name="content"
+            class="form-control"
+            placeholder="Enter your comment"
+          />
+          <button class="btn btn-sm btn-primary mt-2" type="submit">Add</button>
+        </div>
+      </form>
 
-    <div class="container mt-4">
-      <% if(comments && comments.length > 0) { %>
-        <% comments.forEach((comment) => { %>
-          <div class="mb-3">
-            <img src="<%= comment.createdBy.profileImageURL %>" width="100px" />
-            <%= comment.createdBy.fullName %>
-            <pre><%= comment.content %></pre>
-          </div>
-        <% }); %>
-      <% } else { %>
-        <p>No comments yet</p>
       <% } %>
+      <div class="mt-3">
+        <% comments.forEach(comment => { %>
+        <div>
+          <img src="/images/blog.jpeg" width="50px" class="rounded-circle" />
+          <strong><%= comment.createdBy.fullName %></strong> 
+          <pre><%= comment.content %></pre>
+        </div>
+        <% }) %>
+      </div>
     </div>
 
 
