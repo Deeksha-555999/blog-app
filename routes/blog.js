@@ -34,6 +34,7 @@ router.get("/:id", async (req, res)=> {
      return res.render("blog", { user: req.user, blog, comments})
 });
 
+
 router.post("/comment/:id", async (req, res) => {
   await Comment.create({
     content: req.body.content,
