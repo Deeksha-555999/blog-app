@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-
-const MONGO_URI = "mongodb+srv://deeksha:deeksha1234@deeksha.l1epqsn.mongodb.net/?appName=deeksha";
+const MONGO_URI =
+  "mongodb+srv://deeksha:deeksha1234@deeksha.l1epqsn.mongodb.net/?appName=deeksha";
 
 async function connectDB() {
   try {
@@ -9,7 +9,6 @@ async function connectDB() {
     console.log("✅ MongoDB connected successfully");
   } catch (error) {
     console.error("❌ Connection failed:", error.message);
-  
   }
 }
 
