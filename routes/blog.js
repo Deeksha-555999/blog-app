@@ -2,6 +2,7 @@ const { Router } = require("express");
 
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
+const User = require("../models/user");
 const path = require("path");
 const multer = require("multer");
 const router = Router();

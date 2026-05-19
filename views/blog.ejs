@@ -17,10 +17,10 @@
   <div class="mt-4 mb-3 d-flex align-items-center  "> 
        <div class="me-2 d-flex align-items-center"> <strong> Posted By : </strong>
         <img src= "/images/blog.jpeg" width="50px" class="rounded-circle" />
-        <strong><%= blog.createdBy.fullName %></strong>
+        <strong><%= blog.createdBy ? blog.createdBy.fullName : "Unknown Author" %></strong>
         </div>
       </div>
-
+    </div>
     <div class="container mt-3">
       <h1>Comments (<%= comments.length %>)</h1>
       <% if (locals.user) { %>
@@ -41,7 +41,7 @@
         <% comments.forEach(comment => { %>
         <div>
           <img src="/images/blog.jpeg" width="50px" class="rounded-circle" />
-          <strong><%= comment.createdBy.fullName %></strong> 
+          <strong><%= comment.createdBy ? comment.createdBy.fullName : "Unknown User" %></strong> 
           <pre><%= comment.content %></pre>
         </div>
         <% }) %>

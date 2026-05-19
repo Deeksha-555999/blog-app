@@ -8,16 +8,16 @@ const commentSchema = new Schema(
     },
     blogId: {
       type: Schema.Types.ObjectId,
-      ref: "blog",
+      ref: "Blog",
     },
     createdBy: {
       type: Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
     },
   },
   { timestamps: true },
 );
 
-const Comment = model("comment", commentSchema);
+const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;
